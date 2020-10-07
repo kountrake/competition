@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Competition {
 
-    private final List<Competitor> competitors;
-    private final List<Integer> wins;
+    private List<Competitor> competitors;
+    private List<Integer> wins;
 
     public Competition(List<Competitor> competitors) {
         this.competitors = competitors;
