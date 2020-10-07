@@ -16,7 +16,11 @@ public class Competition {
         }
     }
 
-    private int mostWin() {
+    public List<Integer> getWins() {
+        return wins;
+    }
+
+    public int mostWin() {
         int most = 0;
         for (int i = 1; i < wins.size(); i++) {
             if (wins.get(most) < wins.get(i)) {
