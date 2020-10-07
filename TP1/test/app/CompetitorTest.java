@@ -1,7 +1,10 @@
 package app;
-import static org.junit.Assert.*;
 
-import src.app.Competitor;
+import static org.junit.jupiter.api.Assertions.*;
+
+import app.Competitor;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class CompetitorTest {
     
@@ -9,7 +12,7 @@ class CompetitorTest {
     private Competitor c2;
 
 
-    @Before
+    @BeforeEach
     public void initialize(){
         c1 = new Competitor("Jhon");
         c2 = new Competitor("Doe",5);
@@ -18,25 +21,25 @@ class CompetitorTest {
 
     @Test
     public void getNameTest(){
-        assertTrue(c1.getName == "Jhon");
+        assertSame("Jhon", c1.getName());
     }
 
     @Test
     public void setNameTest() {
         c1.setName("Paul");
-        assertTrue(c1.getName == "Paul");
+        assertSame("Paul", c1.getName());
     }
 
     @Test
     public void getStrengthTest(){
-        assertTrue(c1.getStrength == 1);
-        assertTrue(c2.getStrength == 5);
+        assertEquals(c1.getStrength(), 1);
+        assertEquals(c2.getStrength(), 5);
     }
 
     @Test
     public void setStrengthTest() {
         c1.setStrength(3);
-        assertTrue(c1.getStrength == 3);
+        assertEquals(c1.getStrength(), 3);
     }
 
 }

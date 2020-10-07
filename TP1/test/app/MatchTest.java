@@ -1,13 +1,19 @@
 package app;
-import static org.junit.Assert.*;
 
-import src.app.Competitor;
-import src.app.Match;
+import static org.junit.jupiter.api.Assertions.*;
+
+import app.Competitor;
+import app.Match;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class MatchTest {
 
-    @Before
-    public void initialize(){
+    Competitor c1;
+    Competitor c2;
+
+    @BeforeEach
+    void initialize(){
         c1 = new Competitor("Jhon");
         c2 = new Competitor("Doe",5);
     }
@@ -15,14 +21,14 @@ class MatchTest {
     @Test
     public void getCompetitorTest () {
         Match match = new Match(c1,c2);
-        assertTrue(match.getCompetitor1().getName()==c1.getName());
-        assertTrue(match.getCompetitor2().getName()==c2.getName());
+        assertEquals(c1.getName(), match.getCompetitor1().getName());
+        assertEquals(c2.getName(), match.getCompetitor2().getName());
     }
 
 
     @Test 
     public void playTest () {
         Match match = new Match(c1,c2);
-        assertTrue(match.play()==1||0);
+        assertTrue(match.play()==1||match.play()==0);
     }
 }
