@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 import static org.junit.jupiter.api.Assertions.*;
+import static util.MathUtils.*;
 
 class CompetitionTest {
 
@@ -33,8 +35,13 @@ class CompetitionTest {
     }
 
     @Test
-    void mostWin() {
+    void mostWinTest() {
         assertEquals(Collections.max(competition.getWins()), competition.getWins().get(competition.mostWin()));
+    }
+
+    @Test
+    void playTest(){
+        assertEquals(fact(competition.getCompetitors().size()-1),sumArray(competition.getWins()));
     }
 
 }

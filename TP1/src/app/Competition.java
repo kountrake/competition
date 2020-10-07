@@ -16,6 +16,10 @@ public class Competition {
         }
     }
 
+    public List<Competitor> getCompetitors() {
+        return competitors;
+    }
+
     public List<Integer> getWins() {
         return wins;
     }
@@ -36,8 +40,9 @@ public class Competition {
                 Match match = new Match(competitors.get(i), competitors.get(j));
                 if (match.play() == 0) {
                     wins.set(i, wins.get(i) + 1);
+                }else{
+                    wins.set(j, wins.get(j) + 1);
                 }
-                wins.set(j, wins.get(j) + 1);
             }
         }
         return competitors.get(mostWin());
