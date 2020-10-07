@@ -8,7 +8,7 @@ import java.util.Collections;
 
 
 import static org.junit.jupiter.api.Assertions.*;
-import static util.MathUtils.*;
+import static util.MathUtil.*;
 
 class CompetitionTest {
 

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static util.MathUtils.fact;
-import static util.MathUtils.sumArray;
+import static util.MathUtil.fact;
+import static util.MathUtil.sumArray;
 
 class LeagueTest {
 
