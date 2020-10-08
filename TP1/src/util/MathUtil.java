@@ -1,16 +1,17 @@
 package util;
 
-import java.util.List;
+import java.util.Collection;
 
-public  class MathUtil {
-    public static int fact (int n) {
-        if (n==0) return(1);
-        else return(n*fact(n-1));
+
+public class MathUtil {
+    public static int fact(int n) {
+        if (n == 0) return (1);
+        else return (n * fact(n - 1));
     }
 
-    public static int sumArray (List<Integer> n){
+    public static int sumArray(Collection<Integer> n) {
         int sum = 0;
-        for(int d : n)
+        for (int d : n)
             sum += d;
         return sum;
     }

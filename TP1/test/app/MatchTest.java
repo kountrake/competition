@@ -1,11 +1,10 @@
 package app;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import app.Competitor;
-import app.Match;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MatchTest {
 
@@ -28,7 +27,8 @@ class MatchTest {
 
     @Test 
     public void playTest () {
-        Match match = new Match(c1,c2);
-        assertTrue(match.play()==1||match.play()==0);
+        Match match = new Match(c1, c2);
+        match.play();
+        assertTrue((c1.getWins() == 1 && c2.getWins() == 0) || (c1.getWins() == 0 && c2.getWins() == 1));
     }
 }

@@ -9,7 +9,7 @@ import java.util.Map;
 public abstract class Competition {
 
     protected final Match match;
-    private final List<Competitor> competitors;
+    protected final List<Competitor> competitors;
 
     public Competition(List<Competitor> competitors) {
         this.competitors = competitors;

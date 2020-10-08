@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static util.MathUtil.fact;
@@ -37,12 +37,15 @@ class LeagueTest {
 
     @Test
     void mostWinTest() {
-        assertEquals(Collections.max(competition.getWins()), competition.getWins().get(competition.mostWin()));
+
     }
 
     @Test
-    void playTest(){
-        assertEquals(fact((competition.getCompetitors().size()-1))*2,sumArray(competition.getWins()));
+    void playTest() {
+        HashMap<Competitor, Integer> ranks = competition.getRanks();
+        int wins = sumArray(ranks.values());
+        System.out.format("%d \n", wins);
+        assertEquals(wins, (fact((competition.getCompetitors().size()) - 1)) * 2);
     }
 
 }
