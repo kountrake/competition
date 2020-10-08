@@ -1,16 +1,22 @@
 package app;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class League extends Competition {
 
+    HashMap<Competitor, Integer> ranking;
+
     public League(List<Competitor> competitors) {
         super(competitors);
+        for (Competitor c : competitors) {
+            ranking.put(c, c.getWins());
+        }
+
     }
 
-    @Override
-    public Competitor play() {
-        super.play(); //Match aller
-        return super.play(); //Return resultat match aller + retour
+    public void play() {
+        super.play(); //Matchs aller
+        super.play(); //Matchs retour
     }
 }

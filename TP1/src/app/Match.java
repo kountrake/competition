@@ -1,8 +1,9 @@
 package app;
 
 public class Match {
-    private final Competitor competitor1;
-    private final Competitor competitor2;
+    private Competitor competitor1;
+    private Competitor competitor2;
+    private Competitor winner;
 
     public Match(Competitor c1, Competitor c2) {
         competitor1 = c1;
@@ -17,11 +18,27 @@ public class Match {
         return competitor2;
     }
 
-    public int play() {
+    public Competitor getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Competitor winner) {
+        this.winner = winner;
+    }
+
+    public void setCompetitor1(Competitor competitor1) {
+        this.competitor1 = competitor1;
+    }
+
+    public void setCompetitor2(Competitor competitor2) {
+        this.competitor2 = competitor2;
+    }
+
+    public void play() {
         if (Math.random() < 0.5) {
-            return 0;
+            competitor1.setWins(competitor1.getWins() + 1);
         }
-        return 1;
+        competitor1.setWins(competitor1.getWins() + 1);
     }
 
 

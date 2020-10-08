@@ -1,51 +1,48 @@
 package app;
 
-import java.util.ArrayList;
+import util.MapUtil;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class Competition {
+public abstract class Competition {
 
-    private List<Competitor> competitors;
-    private List<Integer> wins;
+    protected final Match match;
+    private final List<Competitor> competitors;
 
     public Competition(List<Competitor> competitors) {
         this.competitors = competitors;
-        wins = new ArrayList<Integer>();
-        for (Competitor c : competitors) {
-            wins.add(0);
-        }
+        this.match = new Match(competitors.get(0), competitors.get(1));
     }
 
-    public List<Competitor> getCompetitors() {
-        return competitors;
+    public void play() {
+        play(competitors);
     }
 
-    public List<Integer> getWins() {
-        return wins;
-    }
-
-    public int mostWin() {
-        int most = 0;
-        for (int i = 1; i < wins.size(); i++) {
-            if (wins.get(most) < wins.get(i)) {
-                most = i;
-            }
-        }
-        return most;
-    }
-
-    public Competitor play() {
+    protected void play(List<Competitor> competitors) {
         for (int i = 0; i < competitors.size() - 1; i++) {
             for (int j = i + 1; j < competitors.size(); j++) {
-                Match match = new Match(competitors.get(i), competitors.get(j));
-                if (match.play() == 0) {
-                    wins.set(i, wins.get(i) + 1);
-                }else{
-                    wins.set(j, wins.get(j) + 1);
-                }
+                match.setCompetitor1(competitors.get(i));
+                match.setCompetitor2(competitors.get(j));
+                match.play();
             }
         }
-        return competitors.get(mostWin());
+    }
+
+    protected void playMatch(Competitor c1, Competitor c2) {
+        this.match.setCompetitor1(c1);
+        this.match.setCompetitor2(c2);
+        match.play();
+    }
+
+    public Map<Competitor, Integer> ranking() {
+        HashMap<Competitor, Integer> ranks = null;
+        for (Competitor c : competitors) {
+            ranks.put(c, c.getWins());
+        }
+        assert ranks != null;
+        return MapUtil.sortByDescendingValue(ranks);
     }
 
 }
