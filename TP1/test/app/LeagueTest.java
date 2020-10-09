@@ -36,11 +36,6 @@ class LeagueTest {
     }
 
     @Test
-    void mostWinTest() {
-
-    }
-
-    @Test
     void playTest() {
         HashMap<Competitor, Integer> ranks = competition.getRanks();
         int wins = sumArray(ranks.values());

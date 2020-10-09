@@ -8,6 +8,7 @@ public class Match {
     public Match(Competitor c1, Competitor c2) {
         competitor1 = c1;
         competitor2 = c2;
+        winner = null;
     }
 
     public Competitor getCompetitor1() {
@@ -36,9 +37,11 @@ public class Match {
 
     public void play() {
         if (Math.random() < 0.5) {
-            competitor1.setWins(competitor1.getWins() + 1);
+            competitor1.increaseWins();
+            setWinner(competitor1);
         }
-        competitor1.setWins(competitor1.getWins() + 1);
+        competitor1.increaseWins();
+        setWinner(competitor2);
     }
 
 

@@ -30,11 +30,7 @@ public abstract class Competition {
         }
     }
 
-    protected void playMatch(Competitor c1, Competitor c2) {
-        this.match.setCompetitor1(c1);
-        this.match.setCompetitor2(c2);
-        match.play();
-    }
+
 
     public Map<Competitor, Integer> ranking() {
         HashMap<Competitor, Integer> ranks = null;

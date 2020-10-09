@@ -13,33 +13,30 @@ class CompetitorTest {
 
 
     @BeforeEach
-    public void initialize(){
+    void initialize(){
         c1 = new Competitor("Jhon");
         c2 = new Competitor("Doe",5);
     }
 
-
     @Test
-    public void getNameTest(){
-        assertSame("Jhon", c1.getName());
-    }
-
-    @Test
-    public void setNameTest() {
+    void setNameTest() {
+        assertEquals("Jhon", c1.getName());
         c1.setName("Paul");
         assertSame("Paul", c1.getName());
     }
 
     @Test
-    public void getStrengthTest(){
-        assertEquals(c1.getStrength(), 1);
-        assertEquals(c2.getStrength(), 5);
+    void setStrengthTest() {
+        assertEquals(5, c2.getStrength());
+        c2.setStrength(3);
+        assertEquals(3, c2.getStrength());
     }
 
     @Test
-    public void setStrengthTest() {
-        c1.setStrength(3);
-        assertEquals(c1.getStrength(), 3);
+    void setWinsTest(){
+        assertEquals(0, c1.getWins());
+        c1.increaseWins();
+        assertEquals(1, c1.getWins());
     }
 
 }

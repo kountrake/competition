@@ -27,10 +27,10 @@ public class Tournament extends Competition {
             match.play();
             if (match.getCompetitor1().getWins() == 1) {
                 competitorsRemaining.add(c.get(i - 1));
-                match.getCompetitor1().setWins(0);
+                match.getCompetitor1().increaseWins();
             } else {
                 competitorsRemaining.add(c.get(i));
-                match.getCompetitor2().setWins(0);
+                match.getCompetitor2().increaseWins();
             }
         }
     }

@@ -45,7 +45,7 @@ public class Competitor {
         return wins;
     }
 
-    public void setWins(int wins) {
-        this.wins = wins;
+    public void increaseWins() {
+        this.wins += 1;
     }
 }
