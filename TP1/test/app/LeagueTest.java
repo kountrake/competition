@@ -39,7 +39,6 @@ class LeagueTest {
     void playTest() {
         HashMap<Competitor, Integer> ranks = competition.getRanks();
         int wins = sumArray(ranks.values());
-        System.out.format("%d \n", wins);
         assertEquals(wins, (fact((competition.getCompetitors().size()) - 1)) * 2);
     }
 

@@ -22,22 +22,27 @@ public abstract class Competition {
 
     protected void play(List<Competitor> competitors) {
         for (int i = 0; i < competitors.size() - 1; i++) {
-            for (int j = i + 1; j < competitors.size(); j++) {
-                match.setCompetitor1(competitors.get(i));
-                match.setCompetitor2(competitors.get(j));
-                match.play();
-            }
+            matchesAgainstOthers(competitors, i);
         }
     }
 
+    protected void matchesAgainstOthers(List<Competitor> competitors, int i) {
+        for (int j = i + 1; j < competitors.size(); j++) {
+            playMatch(competitors.get(i), competitors.get(j));
+        }
+    }
 
+    protected void playMatch(Competitor c1, Competitor c2){
+        match.setCompetitor1(c1);
+        match.setCompetitor2(c2);
+        match.play();
+    }
 
     public Map<Competitor, Integer> ranking() {
-        HashMap<Competitor, Integer> ranks = null;
+        HashMap<Competitor, Integer> ranks = new HashMap<>();
         for (Competitor c : competitors) {
             ranks.put(c, c.getWins());
         }
-        assert ranks != null;
         return MapUtil.sortByDescendingValue(ranks);
     }
 

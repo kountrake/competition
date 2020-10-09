@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static util.MathUtil.fact;
 
 class CompetitionTest {
 
@@ -16,6 +17,7 @@ class CompetitionTest {
     Competitor c2;
     Competitor c3;
     Competitor c4;
+    ArrayList<Competitor> competitors;
     MockCompetition competition;
 
     @BeforeEach
@@ -24,7 +26,7 @@ class CompetitionTest {
         c2 = new Competitor("Doe",5);
         c3 = new Competitor("Timo",2);
         c4 = new Competitor("Leon",7);
-        ArrayList<Competitor> competitors = new ArrayList<>();
+        competitors = new ArrayList<>();
         competitors.add(c1);
         competitors.add(c2);
         competitors.add(c3);
@@ -34,17 +36,33 @@ class CompetitionTest {
 
     @Test
     void playTest() {
+        assertEquals(0, c1.getWins());
+        assertEquals(0, c2.getWins());
+        assertEquals(0, c3.getWins());
+        assertEquals(0, c4.getWins());
+        competition.play(competitors);
+        int totalWins = competitors.get(0).getWins() + competitors.get(1).getWins() + competitors.get(2).getWins() + competitors.get(3).getWins();
+        assertEquals(fact(competitors.size()-1), totalWins, "Number of wins does not match the number of matches");
     }
 
     @Test
-    void testPlayTest() {
+    void matchesAgainstOthersTest(){
+        assertEquals(0, c1.getWins());
+        assertEquals(0, c2.getWins());
+        assertEquals(0, c3.getWins());
+        assertEquals(0, c4.getWins());
+        competition.matchesAgainstOthers(competitors,0);
+        int totalWins = competitors.get(0).getWins() + competitors.get(1).getWins() + competitors.get(2).getWins() + competitors.get(3).getWins();
+        assertEquals(3, totalWins, "Number of wins does not match the number of matches");
     }
 
     @Test
-    void playMatchTest() {
-        //competition.playMatch(c1, c2);
-        System.out.format("%d %d",c1.getWins(), c2.getWins());
-        assertTrue(c1.getWins() == 1 && c2.getWins() ==0 || c1.getWins() == 0 && c2.getWins() == 1);
+    void playMatchTest(){
+        assertEquals(0, c1.getWins());
+        assertEquals(0, c2.getWins());
+        competition.playMatch(c1, c2);
+        int totalWins = competitors.get(0).getWins() + competitors.get(1).getWins();
+        assertEquals(1, totalWins, "Number of wins does not match the number of matches");
     }
 
     @Test

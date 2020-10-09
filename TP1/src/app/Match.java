@@ -39,9 +39,10 @@ public class Match {
         if (Math.random() < 0.5) {
             competitor1.increaseWins();
             setWinner(competitor1);
+        }else {
+            competitor2.increaseWins();
+            setWinner(competitor2);
         }
-        competitor1.increaseWins();
-        setWinner(competitor2);
     }
 
 
