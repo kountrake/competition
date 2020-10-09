@@ -35,9 +35,38 @@ class TournamentTest {
     }
 
     @Test
+    void oddCompetitors() {
+        assertEquals(5, competition.competitors.size());
+        competition.oddCompetitors();
+        assertEquals(4, competition.competitors.size());
+        assertEquals(1, competition.getCompetitorsRemaining().size());
+        assertEquals(c1, competition.getCompetitorsRemaining().get(0));
+    }
+
+    @Test
+    void winnerGoesNextRoundTest() {
+        assertEquals(0, competition.getCompetitorsRemaining().size());
+        competition.playMatch(c1, c2);
+        competition.winnerGoesNextRound();
+        assertEquals(1, competition.getCompetitorsRemaining().size());
+    }
+
+    @Test
+    void playARoundTest() {
+        assertEquals(5, competition.competitors.size());
+        competition.oddCompetitors();
+        assertEquals(4, competition.competitors.size());
+        assertEquals(1, competition.getCompetitorsRemaining().size());
+        assertEquals(c1, competition.getCompetitorsRemaining().get(0));
+        competition.playARound(competition.competitors);
+        assertEquals(3, competition.getCompetitorsRemaining().size());
+    }
+
+    @Test
     void playTest() {
         assertEquals(5, competition.competitors.size());
+        assertEquals(0, competition.getCompetitorsRemaining().size());
         competition.play();
-        assertEquals(1, competition.competitors.size(), "Problem with the amount of winner");
+        assertEquals(1, competition.getCompetitorsRemaining().size(), "Problem with the amount of winner");
     }
 }

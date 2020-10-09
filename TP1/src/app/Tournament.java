@@ -32,45 +32,34 @@ public class Tournament extends Competition {
 
     /**
      * Odd competitors.
-     *
-     * @param c                    the c
-     * @param competitorsRemaining the competitors remaining
      */
-    public void oddCompetitors(List<Competitor> c, ArrayList<Competitor> competitorsRemaining) {
-        if (c.size() % 2 != 0) {
-            competitorsRemaining.add(c.get(0));
-            c.remove(0);
+    public void oddCompetitors() {
+        if (competitors.size() % 2 != 0) {
+            competitorsRemaining.add(competitors.get(0));
+            competitors.remove(0);
         }
     }
 
     /**
      * Play a round.
      *
-     * @param c                    the c
-     * @param competitorsRemaining the competitors remaining
+     * @param c                    the competitors for the round
      */
-    public void playARound(List<Competitor> c, ArrayList<Competitor> competitorsRemaining) {
+    public void playARound(List<Competitor> c) {
         for (int i = 1; i < c.size(); i += 2) {
             playAMatch(c, i);
-            winnerOfTheMatch(c, competitorsRemaining, i);
+            winnerGoesNextRound();
         }
     }
 
     /**
      * Winner of the match.
      *
-     * @param c                    the c
-     * @param competitorsRemaining the competitors remaining
-     * @param i                    the
      */
-    public void winnerOfTheMatch(List<Competitor> c, ArrayList<Competitor> competitorsRemaining, int i) {
-        if (match.getCompetitor1().getWins() == 1) {
-            competitorsRemaining.add(c.get(i - 1));
-            match.getCompetitor1().increaseWins();
-        } else {
-            competitorsRemaining.add(c.get(i));
-            match.getCompetitor2().increaseWins();
-        }
+    public void winnerGoesNextRound() {
+        competitorsRemaining.remove(this.match.getCompetitor1());
+        competitorsRemaining.remove(this.match.getCompetitor2());
+        competitorsRemaining.add(this.match.getWinner());
     }
 
     /**
@@ -95,8 +84,8 @@ public class Tournament extends Competition {
         if (c.size() == 1) {
             return c.get(0);
         }
-        oddCompetitors(c, competitorsRemaining);
-        playARound(c, competitorsRemaining);
+        oddCompetitors();
+        playARound(c);
         return process(competitorsRemaining);
     }
 
