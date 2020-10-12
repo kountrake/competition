@@ -43,7 +43,7 @@ public class Tournament extends Competition {
     /**
      * Play a round.
      *
-     * @param c                    the competitors for the round
+     * @param c the competitors for the round
      */
     public void playARound(List<Competitor> c) {
         for (int i = 1; i < c.size(); i += 2) {
@@ -54,7 +54,6 @@ public class Tournament extends Competition {
 
     /**
      * Winner of the match.
-     *
      */
     public void winnerGoesNextRound() {
         competitorsRemaining.remove(this.match.getCompetitor1());
@@ -65,8 +64,8 @@ public class Tournament extends Competition {
     /**
      * Play a match.
      *
-     * @param c the c
-     * @param i the
+     * @param c the competitors
+     * @param i the index
      */
     public void playAMatch(List<Competitor> c, int i) {
         match.setCompetitor1(c.get(i - 1));
@@ -76,8 +75,8 @@ public class Tournament extends Competition {
 
     /**
      * Process competitor.
-     *
-     * @param c the c
+     * /!\ Do not work... The Random class throw an error because of the recursive calls
+     * @param c the competitors
      * @return the competitor
      */
     public Competitor process(List<Competitor> c) {
