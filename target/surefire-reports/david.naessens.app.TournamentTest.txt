@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: david.naessens.app.TournamentTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.02 s <<< FAILURE! - in david.naessens.app.TournamentTest
+playARoundTest  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <3> but was: <2>
+	at david.naessens.app.TournamentTest.playARoundTest(TournamentTest.java:62)
+
+playTest  Time elapsed: 0.016 s  <<< ERROR!
+java.lang.StackOverflowError
+
