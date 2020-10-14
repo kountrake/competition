@@ -27,7 +27,7 @@ Il faut donc également posséder [Maven](https://maven.apache.org/install.html)
 utilisant les différentes commandes de Maven.
 
 
-### Compiler les fichiers 
+## Utilisation du dépôt
 
 #### Récupération du dépôt Git
 
