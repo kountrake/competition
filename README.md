@@ -1,4 +1,4 @@
-# Compétitions Sportives
+<div align="center"># Compétitions Sportives</div>
 
 Le but de ce premier projet est de réaliser une application permettant d'organiser des matchs et des compétitions 
 regroupant plusieurs matchs entre différents compétiteurs.
