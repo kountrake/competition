@@ -18,7 +18,7 @@ public class Tournament extends Competition {
      */
     public Tournament(List<Competitor> competitors) {
         super(competitors);
-        competitorsRemaining = new ArrayList<>();
+        competitorsRemaining = new ArrayList<Competitor>();
     }
 
     /**

@@ -10,55 +10,92 @@ regroupant plusieurs matchs entre différents compétiteurs.
 * Les tournois à élimination directe se réalise en plusieurs tours. Seuls les compétiteurs ayant gagné leur match passent
 au tour suivant
 
+## Prérequis pour l'utilisation de ce projet
+
+### Git
+
+Avant toutes choses il est nécessaire de posséder [Git](https://git-scm.com/book/fr/v2/D%C3%A9marrage-rapide-Installation-de-Git) 
+afin de récupérer le dépôt du projet.
+
+### Maven
+
+Afin d'automatiser différentes tâches nous avons fait le choix d'inclure à notre projet Maven qui est un outil puissant permettant
+de faciliter et d'accélérer l'exécution de tâches telles que la compilation des sources, la réalisation des tests, production
+d'un .jar, ...
+
+Il faut donc également posséder [Maven](https://maven.apache.org/install.html) afin de réaliser toutes ces tâches en 
+utilisant les différentes commandes de Maven.
+
 
 ### Compiler les fichiers 
 
-Pour compiler l'ensemble des sources il faut au préalable créer un dossier classes
+#### Récupération du dépôt Git
+
+Il est d'abord primordiale de récupérer le dépôt git du projet. Pour cela il vous faut vous placer dans le dossier où 
+vous voulez placer le dépôt.
+
+Exécuter ensuite la commande:
 
 ```
-    mkdir classes
+    git clone git@gitlab-etu.fil.univ-lille1.fr:naessens/coo-s5-2020.git
 ```
+Cette commande vous permet de récupérer le dépôt via SSH. Dans le cas où cela ne fonctionnerait pas, vous devez 
+configurer et créer un clé ssh. Merci de vous référer à l'aide disponible [ici](https://git-scm.com/book/fr/v2/Git-sur-le-serveur-G%C3%A9n%C3%A9ration-des-cl%C3%A9s-publiques-SSH).
 
-On peut maintenant compiler les sources
-
-```
-    javac src/*/*.java -d classes
-```
-
-Pour créer le .jar
+Dans le cas où vous voudriez récupérer le dépôt via HTTPS (sans configurer de SSH) utilisez cette commande:
 
 ```
-    jar cvf Competition.jar classes/*/*.class
+    git clone https://gitlab-etu.fil.univ-lille1.fr/naessens/coo-s5-2020.git
 ```
 
+#### Commandes Maven 
 
-Pour générer la javadoc
+Tous les fichiers générer se retrouvent dans le dossier _/target/_.
 
-```
-    mkdir doc
-    javadoc -d doc src/*/*
-```
-## Lancer les test
-
-Nous avons fait le choix d'utiliser JUNIT 5 et il faut donc télécharger le .jar au préalable
+##### <ins>Compiler les sources</ins>
+On peut maintenant compiler les sources. Placez-vous à l'origine du dépôt et exécutez la commande :
 
 ```
-    wget https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.7.0/junit-platform-console-standalone-1.7.0.jar
+    mvn compile
 ```
 
-/!\ Lancement manuel des tests encore impossible...
+Ces fichiers sont compilés dans le dossier _/classes/_.
 
+##### <ins>Générer le .jar</ins>
 
+Si vous voulez générer le .jar, exécutez la commande :
 
-### Problèmes rencontrés
+```
+    mvn package
+```
+Celui-ci portera le nom _Competition-project-2.0-SNAPSHOT.jar_
 
-Nous n'avons pu terminer car nous avons voulu créer la classe tournament en ayant comme fonction d'execution du tournoi 
-une fonction récursive. Problème, les matchs nécessitant la génération d'un Random, cette dernière classe génère une
-erreur au vu du nombre de random et de seed nécessaire dans les appelles récursifs. Il nous aurait donc fallu revoir 
-notre code afin de ne plus avoir cette erreur.
+##### <ins>Générer la javadoc</ins>
+Afin de générer la javadoc, il vous faut utiliser la commande :
 
-L'utilisation d'un IDE nous facilitant certaines tâches telles que la compilation des sources et l'exécution des tests
-rend finalement l'exécution et l'écriture manuelle des commandes pour le Readme compliquées. 
+```
+    mvn javadoc:javadoc
+```
+
+Cette dernière est générée dans le dossier _/site/apidocs/_
+##### <ins>Lancer les test</ins>
+Pour exécuter l'ensemble des tests, utilisez la commande :
+
+```
+    mvn test
+```
+Chaque classe de test sera compilée et les tests seront exécutés. Un résumé de l'exécution des tests est ainsi affiché
+durant l'exécution des tests.
+
+Un dossier est également généré est vous y retrouverez le résultat de chacune des classes de test. Ces résultats sont 
+disponibles dans le dossier _/surefire-reports/_
+
+##### <ins>Nettoyer le dépôt</ins>
+
+Afin de supprimer tous les fichiers générés par Maven, vous pouvez exécuter la commande :
+```
+    mvn clean
+```
 
 
 ## Autheurs
