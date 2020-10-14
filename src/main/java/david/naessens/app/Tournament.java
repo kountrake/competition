@@ -46,6 +46,7 @@ public class Tournament extends Competition {
 
     /**
      * Process competitor.
+     *
      * @param c the competitors
      */
     public void process(List<Competitor> c) {
@@ -66,6 +67,16 @@ public class Tournament extends Competition {
         }
     }
 
+
+    /**Next match ordering function depending on the round number
+     *      -Decrease on peer round to go down the competitors list
+     *      -Increase on odd round to go through the competitors list
+     * That way no one can be in final without playing a match.
+     *
+     * @param i
+     * @param nbRounds
+     * @return
+     */
     private int nextMatch(int i, int nbRounds) {
         if (nbRounds % 2 == 0){
             i--;
@@ -75,6 +86,9 @@ public class Tournament extends Competition {
         return i;
     }
 
+    /**
+     * Removes the loser of a match of the remaining competitors
+     */
     private void removeLoser() {
         if (this.match.getWinner() == this.match.getCompetitor1()){
             competitorsRemaining.remove(this.match.getCompetitor2());

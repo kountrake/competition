@@ -7,6 +7,7 @@ public class Match {
     private Competitor competitor1;
     private Competitor competitor2;
     private Competitor winner;
+    private final int MAX_STRENGTH = 10;
 
     /**
      * Instantiates a new Match.
@@ -84,6 +85,32 @@ public class Match {
         }else {
             competitor2.increaseWins();
             setWinner(competitor2);
+        }
+    }
+
+    public Competitor strongest(){
+        if (competitor1.getStrength()>= competitor2.getStrength()){
+            return competitor1;
+        }
+        return competitor2;
+    }
+
+    public Competitor weakest(){
+        if (competitor1.getStrength() < competitor2.getStrength()){
+            return competitor1;
+        }
+        return competitor2;
+    }
+
+    public void playWithStrength(){
+        float bonus = (float)(MAX_STRENGTH - (competitor1.getStrength() + competitor2.getStrength())) / 2;
+        double random = Math.random();
+        if (random >= ((weakest().getStrength() + bonus)/10)){
+            strongest().increaseWins();
+            winner = strongest();
+        }else{
+            weakest().increaseWins();
+            winner = weakest();
         }
     }
 
