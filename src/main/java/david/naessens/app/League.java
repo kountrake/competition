@@ -48,8 +48,7 @@ public class League extends Competition {
     public void play() {
         super.play(); //Matchs aller
         super.play(); //Matchs retour
-        for (Competitor c :
-                getCompetitors()) {
+        for (Competitor c : getCompetitors()) {
             ranks.replace(c, c.getWins());
         }
     }
