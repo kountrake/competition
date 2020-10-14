@@ -1,6 +1,6 @@
-<div align="center"># Compétitions Sportives</div>
+# <div align="center">PROJET: Compétitions Sportives</div>
 
-Le but de ce premier projet est de réaliser une application permettant d'organiser des matchs et des compétitions 
+Le but de ce projet est de réaliser une application permettant d'organiser des matchs et des compétitions 
 regroupant plusieurs matchs entre différents compétiteurs.
 
 ## Pour commencer...
