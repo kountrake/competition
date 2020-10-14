@@ -46,7 +46,6 @@ public class Tournament extends Competition {
 
     /**
      * Process competitor.
-     * /!\ Do not work... The Random class throw an error because of the recursive calls
      * @param c the competitors
      */
     public void process(List<Competitor> c) {
@@ -82,7 +81,6 @@ public class Tournament extends Competition {
         }else{
             competitorsRemaining.remove(this.match.getCompetitor1());
         }
-        System.out.println("On remove un joueur");
     }
 
     @Override
