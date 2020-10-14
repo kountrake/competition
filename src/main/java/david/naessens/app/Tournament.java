@@ -51,29 +51,27 @@ public class Tournament extends Competition {
      */
     public void process(List<Competitor> c) {
         int i = 1;
-        int j = 0;
-        while(c.size()!=1 && j <10){
-            i = nextRound(c, i);
-            i = nextRound(i);
-            j++;
-        }
-    }
-
-    private int nextRound(List<Competitor> c, int i) {
-        if (c.size() % 2 != 0 && i ==1){
-            i++;
-        }
-        else{
+        int nbRounds = 1;
+        while(c.size()!=1){
             playAMatch(c, i);
-            i ++;
             removeLoser();
+            i = nextMatch(i, nbRounds);
+            if (i >= competitorsRemaining.size()){
+                i--;
+                nbRounds++;
+            }
+            if (i==0){
+                i++;
+                nbRounds++;
+            }
         }
-        return i;
     }
 
-    private int nextRound(int i) {
-        if (i >= competitorsRemaining.size()){
-            i =1;
+    private int nextMatch(int i, int nbRounds) {
+        if (nbRounds % 2 == 0){
+            i--;
+        }else{
+            i++;
         }
         return i;
     }
