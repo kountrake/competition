@@ -103,6 +103,6 @@ Afin de supprimer tous les fichiers générés par Maven, vous pouvez exécuter 
 * **David Lucas** 
 * **Naessens Bastien**
 
-##IDE utilisés
+## IDE utilisés
 
-Intellij Idea Ultimate
+Intellij Idea Ultimate ([lien](https://www.jetbrains.com/fr-fr/idea/))
