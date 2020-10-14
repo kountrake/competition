@@ -17,6 +17,13 @@ au tour suivant
 Avant toutes choses il est nécessaire de posséder [Git](https://git-scm.com/book/fr/v2/D%C3%A9marrage-rapide-Installation-de-Git) 
 afin de récupérer le dépôt du projet.
 
+### Open JDK 11
+
+Pour ce projet java nous avons utilisé l'open JDK 11. Merci de vous assurez que vous possédez au minimum cette version.
+```
+    java --version
+```
+
 ### Maven
 
 Afin d'automatiser différentes tâches nous avons fait le choix d'inclure à notre projet Maven qui est un outil puissant permettant
