@@ -18,7 +18,7 @@ public class Tournament extends Competition {
      */
     public Tournament(List<Competitor> competitors) {
         super(competitors);
-        competitorsRemaining = new ArrayList<Competitor>();
+        competitorsRemaining = new ArrayList<>();
         competitorsRemaining.addAll(competitors);
     }
 
@@ -38,10 +38,8 @@ public class Tournament extends Competition {
      * @param c the competitors
      * @param i the index
      */
-    public void playAMatch(List<Competitor> c, int i) {
-        match.setCompetitor1(c.get(i - 1));
-        match.setCompetitor1(c.get(i));
-        match.play();
+    private void playAMatch(List<Competitor> c, int i) {
+        super.playMatch(c.get(i - 1), c.get(i));
     }
 
     /**
@@ -49,14 +47,14 @@ public class Tournament extends Competition {
      *
      * @param c the competitors
      */
-    public void process(List<Competitor> c) {
+    protected void process(List<Competitor> c) {
         int i = 1;
         int nbRounds = 1;
-        while(c.size()!=1){
+        while (c.size() != 1) {
             playAMatch(c, i);
             removeLoser();
             i = nextMatch(i, nbRounds);
-            if (i >= competitorsRemaining.size()){
+            if (i >= competitorsRemaining.size()) {
                 i--;
                 nbRounds++;
             }
@@ -68,14 +66,15 @@ public class Tournament extends Competition {
     }
 
 
-    /**Next match ordering function depending on the round number
-     *      -Decrease on peer round to go down the competitors list
-     *      -Increase on odd round to go through the competitors list
+    /**
+     * Next match ordering function depending on the round number
+     * -Decrease on peer round to go down the competitors list
+     * -Increase on odd round to go through the competitors list
      * That way no one can be in final without playing a match.
      *
-     * @param i
-     * @param nbRounds
-     * @return
+     * @param i        the index
+     * @param nbRounds the number of rounds played
+     * @return the index needed for the next match
      */
     private int nextMatch(int i, int nbRounds) {
         if (nbRounds % 2 == 0){

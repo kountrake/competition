@@ -52,10 +52,4 @@ public class League extends Competition {
             ranks.replace(c, c.getWins());
         }
     }
-
-    public void playMatch(Competitor c1, Competitor c2) {
-        this.match.setCompetitor1(c1);
-        this.match.setCompetitor2(c2);
-        match.play();
-    }
 }

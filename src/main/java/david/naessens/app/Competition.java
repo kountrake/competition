@@ -66,10 +66,22 @@ public abstract class Competition {
      * @param c1 the c 1
      * @param c2 the c 2
      */
-    protected void playMatch(Competitor c1, Competitor c2){
+    protected void playMatch(Competitor c1, Competitor c2) {
         match.setCompetitor1(c1);
         match.setCompetitor2(c2);
         match.play();
+    }
+
+    /**
+     * Play match using the strength of each competitor.
+     *
+     * @param c1 the competitor 1
+     * @param c2 the competitor 2
+     */
+    protected void playMatchWithStrength(Competitor c1, Competitor c2) {
+        match.setCompetitor1(c1);
+        match.setCompetitor2(c2);
+        match.playWithStrength();
     }
 
     /**
