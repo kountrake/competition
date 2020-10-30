@@ -6,6 +6,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The type Master.
+ */
 public class Master extends Competition {
 
     private final ArrayList<Group> groups;
@@ -18,6 +21,8 @@ public class Master extends Competition {
      * Instantiates a new Competition.
      *
      * @param competitors the competitors
+     * @param nbGroups    the nb groups
+     * @param nbOut       the nb out
      */
     public Master(List<Competitor> competitors, int nbGroups, int nbOut) {
         super(competitors);
@@ -56,6 +61,9 @@ public class Master extends Competition {
         }
     }
 
+    /**
+     * Play groups.
+     */
     public void playGroups(){
         for (League league : this.leagues) {
             league.play();
@@ -72,6 +80,9 @@ public class Master extends Competition {
         return group.OrderByVictories();
     }
 
+    /**
+     * Init finalists.
+     */
     public void initFinalists(){
         int cpt = 1;
         int position = 1;
@@ -89,9 +100,19 @@ public class Master extends Competition {
         Collections.shuffle(finalists);
     }
 
+    /**
+     * Play tournament.
+     */
     public void playTournament(){
         Tournament tournament = new Tournament(finalists);
         tournament.play();
         winner = tournament.getCompetitorsRemaining().get(0);
+    }
+
+    @Override
+    public void play() {
+        playGroups();
+        initFinalists();
+        playTournament();
     }
 }
