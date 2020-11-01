@@ -8,8 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static david.naessens.util.MathUtil.fact;
+import static david.naessens.util.MathUtil.nbMatch;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CompetitionTest {
 
@@ -42,7 +43,7 @@ class CompetitionTest {
         assertEquals(0, c4.getWins());
         competition.play(competitors);
         int totalWins = competitors.get(0).getWins() + competitors.get(1).getWins() + competitors.get(2).getWins() + competitors.get(3).getWins();
-        assertEquals(fact(competitors.size()-1), totalWins, "Number of wins does not match the number of matches");
+        assertEquals(nbMatch(competitors.size()), totalWins, "Number of wins does not match the number of matches");
     }
 
     @Test

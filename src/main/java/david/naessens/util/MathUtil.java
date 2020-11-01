@@ -4,9 +4,12 @@ import java.util.Collection;
 
 
 public class MathUtil {
-    public static int fact(int n) {
-        if (n == 0) return (1);
-        else return (n * fact(n - 1));
+    public static int nbMatch(int n) {
+        int res = 0;
+        for (int i = 1; i < n; i++) {
+            res += i;
+        }
+        return res;
     }
 
     public static int sumArray(Collection<Integer> n) {

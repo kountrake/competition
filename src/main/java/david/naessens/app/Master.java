@@ -1,10 +1,10 @@
 package david.naessens.app;
 
-import java.lang.Math;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+
 
 /**
  * The type Master.
@@ -15,6 +15,7 @@ public class Master extends Competition {
     private final ArrayList<League> leagues;
     private final ArrayList<Competitor> finalists;
     private final int nbOut;
+    private final int nbGroups;
     private Competitor winner;
 
     /**
@@ -29,14 +30,46 @@ public class Master extends Competition {
         this.nbOut = nbOut;
         this.finalists = new ArrayList<>();
         this.leagues = new ArrayList<>();
-        groups = new ArrayList<>();
-        generateGroups(nbGroups);
-        fillGroups(competitors, nbGroups);
+        this.groups = new ArrayList<>();
+        this.nbGroups = nbGroups;
+    }
+
+    public ArrayList<Competitor> getFinalists() {
+        return finalists;
+    }
+
+    public ArrayList<Group> getGroups() {
+        return groups;
+    }
+
+    public ArrayList<League> getLeagues() {
+        return leagues;
+    }
+
+    public Competitor getWinner() {
+        return winner;
+    }
+
+    public void initGroups() {
+        generateGroups(this.nbGroups);
+    }
+
+    public void fillGroups() {
+        fillGroups(this.competitors, this.nbGroups);
+    }
+
+    public void initLeagues() {
         initLeagues(this.groups);
     }
 
+    public void initMasterGroupsStage() {
+        initGroups();
+        fillGroups();
+        initLeagues();
+    }
+
     private void initLeagues(ArrayList<Group> groups) {
-        for (Group group : this.groups) {
+        for (Group group : groups) {
             League competition = new League(group.getCompetitors());
             this.leagues.add(competition);
         }
@@ -47,7 +80,7 @@ public class Master extends Competition {
         int start = 0;
         int end = competitorsPerGroup;
         for (Group group : this.groups) {
-            ArrayList<Competitor> comp = (ArrayList<Competitor>) competitors.subList(start, end);
+            ArrayList<Competitor> comp = new ArrayList<>(competitors.subList(start, end));
             group.addCompetitors(comp);
             start = end;
             end += competitorsPerGroup;
