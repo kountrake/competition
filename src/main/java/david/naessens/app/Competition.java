@@ -97,4 +97,14 @@ public abstract class Competition {
         return MapUtil.sortByDescendingValue(ranks);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder("| Competition Ranking |\n"
+                + "_______________________\n");
+        for (Competitor competitor :
+                competitors) {
+            res.append(competitor.getName()).append(" | ").append(competitor.getWins()).append("\n");
+        }
+        return res.toString();
+    }
 }

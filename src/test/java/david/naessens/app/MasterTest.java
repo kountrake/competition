@@ -17,7 +17,7 @@ public class MasterTest {
     private Master master;
 
     @BeforeEach
-    void setup() {
+    void setup() throws Exception {
         competitors = CompetitorsGenerator.generateCompetitors(24);
         master = new Master(competitors, 3, 8);
     }
@@ -53,7 +53,6 @@ public class MasterTest {
         for (League league : master.getLeagues()) {
             ranks = league.getRanks();
             int wins = sumArray(ranks.values());
-            System.out.println(league.getCompetitors().size());
             assertEquals(((nbMatch(league.getCompetitors().size()) * 2)), wins);
         }
         assertTrue(true);
@@ -78,6 +77,21 @@ public class MasterTest {
 
     @Test
     void play3Groups8outTest() {
+        master.play();
+        assertNotNull(master.getWinner());
+    }
 
+    @Test
+    void play4Groups8outTest() throws Exception {
+        Master master2 = new Master(competitors, 4, 8);
+        master2.play();
+        assertNotNull(master2.getWinner());
+    }
+
+    @Test
+    void play4Groups16outTest() throws Exception {
+        Master master2 = new Master(competitors, 4, 8);
+        master2.play();
+        assertNotNull(master2.getWinner());
     }
 }

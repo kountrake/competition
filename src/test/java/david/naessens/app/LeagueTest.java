@@ -10,6 +10,7 @@ import java.util.HashMap;
 import static david.naessens.util.MathUtil.nbMatch;
 import static david.naessens.util.MathUtil.sumArray;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LeagueTest {
 
@@ -40,6 +41,14 @@ class LeagueTest {
         HashMap<Competitor, Integer> ranks = competition.getRanks();
         int wins = sumArray(ranks.values());
         assertEquals(wins, (nbMatch(competition.getCompetitors().size()) * 2));
+    }
+
+    @Test
+    void toStringTest() {
+        System.out.println(competition.toString());
+        competition.updateRanks();
+        System.out.println(competition.toString());
+        assertTrue(true);
     }
 
 }

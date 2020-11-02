@@ -55,11 +55,10 @@ public class Tournament extends Competition {
             removeLoser();
             i = nextMatch(i, nbRounds);
             if (i >= competitorsRemaining.size()) {
-                i--;
+                i = competitorsRemaining.size() - 1;
                 nbRounds++;
-            }
-            if (i==0){
-                i++;
+            } else if (i <= 0) {
+                i = 1;
                 nbRounds++;
             }
         }
@@ -78,7 +77,7 @@ public class Tournament extends Competition {
      */
     private int nextMatch(int i, int nbRounds) {
         if (nbRounds % 2 == 0){
-            i--;
+            i -= 2;
         }else{
             i++;
         }

@@ -93,4 +93,12 @@ public class Competitor {
     public void increaseWins() {
         this.wins += 1;
     }
+
+    @Override
+    public String toString() {
+        return "Competitor{" +
+                "name='" + name + '\'' +
+                ", wins=" + wins +
+                '}';
+    }
 }

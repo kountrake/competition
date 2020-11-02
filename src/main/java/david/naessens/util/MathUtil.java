@@ -18,4 +18,12 @@ public class MathUtil {
             sum += d;
         return sum;
     }
+
+    public static boolean isAPowerOfTwo(int n) {
+        int tmp = n;
+        while (tmp > 1) {
+            tmp /= 2;
+        }
+        return tmp == 0;
+    }
 }

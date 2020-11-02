@@ -105,14 +105,20 @@ public class Match {
     public void playWithStrength(){
         float bonus = (float)(MAX_STRENGTH - (competitor1.getStrength() + competitor2.getStrength())) / 2;
         double random = Math.random();
-        if (random >= ((weakest().getStrength() + bonus)/10)){
+        if (random >= ((weakest().getStrength() + bonus) / 10)) {
             strongest().increaseWins();
             winner = strongest();
-        }else{
+        } else {
             weakest().increaseWins();
             winner = weakest();
         }
     }
 
-
+    @Override
+    public String toString() {
+        return "Match{" +
+                competitor1.getName() + " vs " + competitor2.getName() +
+                "===> The winner is " + winner.getName() +
+                '}';
+    }
 }

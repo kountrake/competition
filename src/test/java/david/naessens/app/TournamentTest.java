@@ -1,6 +1,7 @@
 package david.naessens.app;
 
 
+import david.naessens.util.CompetitorsGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,5 +39,12 @@ class TournamentTest {
     void playTest() {
         competition.play();
         assertEquals(1, competition.getCompetitorsRemaining().size(), "Problem with the amount of winner");
+    }
+
+    @Test
+    void playWith8Competitors() {
+        Tournament tournament = new Tournament(CompetitorsGenerator.generateCompetitors(8));
+        tournament.play();
+        assertEquals(1, tournament.getCompetitorsRemaining().size());
     }
 }

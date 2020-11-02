@@ -1,6 +1,9 @@
 package david.naessens.app;
 
 
+import david.naessens.app.exceptions.NotAPowerOfTwoException;
+import david.naessens.util.MathUtil;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,10 +26,13 @@ public class Master extends Competition {
      *
      * @param competitors the competitors
      * @param nbGroups    the nb groups
-     * @param nbOut       the nb out
+     * @param nbOut       the nb out has to be a power of two
      */
-    public Master(List<Competitor> competitors, int nbGroups, int nbOut) {
+    public Master(List<Competitor> competitors, int nbGroups, int nbOut) throws Exception {
         super(competitors);
+        if (MathUtil.isAPowerOfTwo(nbOut)) {
+            throw new NotAPowerOfTwoException("nbOut is not a power of 2");
+        }
         this.nbOut = nbOut;
         this.finalists = new ArrayList<>();
         this.leagues = new ArrayList<>();
@@ -144,6 +150,7 @@ public class Master extends Competition {
 
     @Override
     public void play() {
+        initMasterGroupsStage();
         playGroups();
         initFinalists();
         playTournament();
