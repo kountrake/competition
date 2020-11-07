@@ -49,7 +49,7 @@ public class Group {
      *
      * @return the array list of the competitors from the group ordered by victories
      */
-    public ArrayList<Competitor> OrderByVictories(){
+    public ArrayList<Competitor> orderByVictories() {
         League league = new League(competitors);
         Competitor[] comps = new Competitor[competitors.size()];
         league.ranking().keySet().toArray(comps);

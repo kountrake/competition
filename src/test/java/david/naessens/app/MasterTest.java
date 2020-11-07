@@ -5,11 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import static david.naessens.util.MathUtil.nbMatch;
-import static david.naessens.util.MathUtil.sumArray;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class MasterTest {
 
@@ -23,54 +20,9 @@ public class MasterTest {
     }
 
     @Test
-    void initGroupsTest() {
-        master.initGroups();
-        assertEquals(3, master.getGroups().size());
-    }
-
-    @Test
-    void fillingGroupsTest() {
-        master.initGroups();
-        master.fillGroups();
-        assertEquals(8, master.getGroups().get(0).getCompetitors().size());
-        assertEquals(8, master.getGroups().get(1).getCompetitors().size());
-        assertEquals(8, master.getGroups().get(2).getCompetitors().size());
-    }
-
-    @Test
-    void initLeagueTest() {
-        master.initGroups();
-        master.fillGroups();
-        master.initLeagues();
-        assertEquals(3, master.getLeagues().size());
-    }
-
-    @Test
-    void PlayGroupsTest() {
-        master.initMasterGroupsStage();
-        master.playGroups();
-        HashMap<Competitor, Integer> ranks;
-        for (League league : master.getLeagues()) {
-            ranks = league.getRanks();
-            int wins = sumArray(ranks.values());
-            assertEquals(((nbMatch(league.getCompetitors().size()) * 2)), wins);
-        }
-        assertTrue(true);
-    }
-
-    @Test
-    void initFinalistsTest() {
-        master.initMasterGroupsStage();
-        master.playGroups();
-        master.initFinalists();
-        assertEquals(8, master.getFinalists().size());
-    }
-
-    @Test
     void playTournamentTest() {
-        master.initMasterGroupsStage();
-        master.playGroups();
-        master.initFinalists();
+        master.getGroupStage().play();
+        master.setFinalists();
         master.playTournament();
         assertNotNull(master.getWinner());
     }
