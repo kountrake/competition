@@ -57,11 +57,4 @@ public class GroupStageTest {
         }
         assertTrue(true);
     }
-
-    @Test
-    void initFinalistsTest() {
-        groupStage.initGroupsStage();
-        groupStage.playGroups();
-        assertEquals(8, groupStage.initFinalists(8).size());
-    }
 }

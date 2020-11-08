@@ -1,7 +1,6 @@
 package david.naessens.app;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class GroupStage extends Competition {
@@ -70,7 +69,7 @@ public class GroupStage extends Competition {
         }
     }
 
-    private ArrayList<Competitor> getCompetitorsInPosition(int i) {
+    public ArrayList<Competitor> getCompetitorsInPosition(int i) {
         Group group = new Group();
         Competitor[] comps = new Competitor[group.getCompetitors().size()];
         for (League league :
@@ -78,28 +77,6 @@ public class GroupStage extends Competition {
             group.addCompetitor(league.ranks.keySet().toArray(comps)[i]);
         }
         return group.orderByVictories();
-    }
-
-    /**
-     * Init finalists.
-     */
-    public ArrayList<Competitor> initFinalists(int nbOut) {
-        ArrayList<Competitor> finalists = new ArrayList<>();
-        int cpt = 1;
-        int position = 1;
-        int i = 0;
-        ArrayList<Competitor> comps = getCompetitorsInPosition(0);
-        while (cpt <= nbOut) {
-            if (i >= comps.size()) {
-                comps = getCompetitorsInPosition(position);
-                position++;
-                i = 0;
-            }
-            finalists.add(comps.get(i));
-            cpt++;
-        }
-        Collections.shuffle(finalists);
-        return finalists;
     }
 
     public void play() {
@@ -113,5 +90,13 @@ public class GroupStage extends Competition {
 
     public ArrayList<League> getLeagues() {
         return leagues;
+    }
+
+    public ArrayList<Competitor> getCompetitors() {
+        return new ArrayList<>(this.competitors);
+    }
+
+    public int getNbGroups() {
+        return nbGroups;
     }
 }

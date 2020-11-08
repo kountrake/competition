@@ -1,5 +1,7 @@
 package david.naessens.app;
 
+import david.naessens.app.competitorsselector.BettersOut;
+import david.naessens.app.competitorsselector.CompetitorsSelector;
 import david.naessens.util.CompetitorsGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +18,10 @@ public class MasterTest {
     @BeforeEach
     void setup() throws Exception {
         competitors = CompetitorsGenerator.generateCompetitors(24);
-        master = new Master(competitors, 3, 8);
+        GroupStage groupStage = new GroupStage(competitors, 3);
+        groupStage.play();
+        CompetitorsSelector competitorsSelector = new BettersOut(8);
+        master = new Master(groupStage, competitorsSelector);
     }
 
     @Test
@@ -35,14 +40,20 @@ public class MasterTest {
 
     @Test
     void play4Groups8outTest() throws Exception {
-        Master master2 = new Master(competitors, 4, 8);
+        GroupStage groupStage = new GroupStage(competitors, 4);
+        groupStage.play();
+        CompetitorsSelector competitorsSelector = new BettersOut(8);
+        Master master2 = new Master(groupStage, competitorsSelector);
         master2.play();
         assertNotNull(master2.getWinner());
     }
 
     @Test
     void play4Groups16outTest() throws Exception {
-        Master master2 = new Master(competitors, 4, 8);
+        GroupStage groupStage = new GroupStage(competitors, 4);
+        groupStage.play();
+        CompetitorsSelector competitorsSelector = new BettersOut(16);
+        Master master2 = new Master(groupStage, competitorsSelector);
         master2.play();
         assertNotNull(master2.getWinner());
     }
