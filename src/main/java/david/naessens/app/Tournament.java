@@ -1,7 +1,7 @@
 package david.naessens.app;
 
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -10,6 +10,7 @@ import java.util.List;
 public class Tournament extends Competition {
 
     private final ArrayList<Competitor> competitorsRemaining;
+    private final ArrayList<String> matches;
 
     /**
      * Instantiates a new Tournament.
@@ -20,6 +21,7 @@ public class Tournament extends Competition {
         super(competitors);
         competitorsRemaining = new ArrayList<>();
         competitorsRemaining.addAll(competitors);
+        matches = new ArrayList<>();
     }
 
     /**
@@ -40,6 +42,7 @@ public class Tournament extends Competition {
      */
     private void playAMatch(List<Competitor> c, int i) {
         super.playMatch(c.get(i - 1), c.get(i));
+        this.matches.add(c.get(i - 1).getName() + " vs " + c.get(i).getName());
     }
 
     /**
@@ -88,9 +91,9 @@ public class Tournament extends Competition {
      * Removes the loser of a match of the remaining competitors
      */
     private void removeLoser() {
-        if (this.match.getWinner() == this.match.getCompetitor1()){
+        if (this.match.getWinner() == this.match.getCompetitor1()) {
             competitorsRemaining.remove(this.match.getCompetitor2());
-        }else{
+        } else {
             competitorsRemaining.remove(this.match.getCompetitor1());
         }
     }
@@ -98,5 +101,22 @@ public class Tournament extends Competition {
     @Override
     public void play() {
         process(competitorsRemaining);
+    }
+
+    public String tournamentSummary() {
+        StringBuilder res = new StringBuilder(this.competitorsRemaining.get(0).getName() + " \n");
+        Collections.reverse(this.matches);
+        res.append(matches.get(0)).append("\n");
+        int nbMatch = 2;
+        int cpt = 2;
+        for (int i = 1; i < matches.size(); i++) {
+            res.append(matches.get(i)).append("\t");
+            if (i == nbMatch) {
+                cpt *= 2;
+                nbMatch = nbMatch + cpt;
+                res.append("\n");
+            }
+        }
+        return res.append("\n").toString();
     }
 }

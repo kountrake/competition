@@ -2,6 +2,7 @@ package david.naessens.app;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The type League.
@@ -53,17 +54,11 @@ public class League extends Competition {
         }
     }
 
-    public void updateRanks() {
-        //TODO Trouver le bug car les ranks ne se mettent pas à jour
-        this.ranks = new HashMap<>(ranking());
-    }
-
-    @Override
-    public String toString() {
+    public String ranksToString(Map<Competitor, Integer> ranks) {
         StringBuilder res = new StringBuilder("| League Ranking |\n"
                 + "_______________________\n");
         for (Competitor competitor :
-                competitors) {
+                ranks.keySet()) {
             res.append(competitor.getName()).append(" | ").append(competitor.getWins()).append("\n");
         }
         return res.toString();

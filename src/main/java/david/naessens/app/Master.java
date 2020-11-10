@@ -15,6 +15,7 @@ public class Master extends Competition {
     private final CompetitorsSelector competitorsSelector;
     private Competitor winner;
     private ArrayList<Competitor> finalists;
+    private Tournament tournament;
 
     /**
      * Instantiates a new Competition.
@@ -44,7 +45,7 @@ public class Master extends Competition {
      * Play tournament.
      */
     public void playTournament() {
-        Tournament tournament = new Tournament(finalists);
+        tournament = new Tournament(finalists);
         tournament.play();
         winner = tournament.getCompetitorsRemaining().get(0);
     }
@@ -54,5 +55,9 @@ public class Master extends Competition {
         groupStage.play();
         setFinalists();
         playTournament();
+    }
+
+    public String masterSummary() {
+        return getGroupStage().ranksGroupStageToString() + "\n\n" + this.tournament.tournamentSummary();
     }
 }

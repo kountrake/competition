@@ -10,7 +10,6 @@ import java.util.HashMap;
 import static david.naessens.util.MathUtil.nbMatch;
 import static david.naessens.util.MathUtil.sumArray;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LeagueTest {
 
@@ -33,22 +32,30 @@ class LeagueTest {
         competitors.add(c3);
         competitors.add(c4);
         competition = new League(competitors);
-        competition.play();
     }
 
     @Test
     void playTest() {
+        competition.play();
         HashMap<Competitor, Integer> ranks = competition.getRanks();
         int wins = sumArray(ranks.values());
         assertEquals(wins, (nbMatch(competition.getCompetitors().size()) * 2));
     }
 
     @Test
-    void toStringTest() {
-        System.out.println(competition.toString());
-        competition.updateRanks();
-        System.out.println(competition.toString());
-        assertTrue(true);
+    void ranksToStringTest() {
+        c1.increaseWins();
+        c1.increaseWins();
+        c2.increaseWins();
+        c2.increaseWins();
+        c2.increaseWins();
+        c2.increaseWins();
+        c3.increaseWins();
+        String myString = "| League Ranking |\n_______________________\n" + c2.getName() + " | " + c2.getWins() + "\n" +
+                c1.getName() + " | " + c1.getWins() + "\n" +
+                c3.getName() + " | " + c3.getWins() + "\n" +
+                c4.getName() + " | " + c4.getWins() + "\n";
+        assertEquals(myString, competition.ranksToString(competition.ranking()));
     }
 
 }

@@ -99,4 +99,13 @@ public class GroupStage extends Competition {
     public int getNbGroups() {
         return nbGroups;
     }
+
+    public String ranksGroupStageToString() {
+        StringBuilder res = new StringBuilder();
+        for (League l :
+                getLeagues()) {
+            res.append(l.ranksToString(l.ranking())).append("\n\n");
+        }
+        return res.toString();
+    }
 }

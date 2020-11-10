@@ -9,8 +9,7 @@ import java.util.HashMap;
 
 import static david.naessens.util.MathUtil.nbMatch;
 import static david.naessens.util.MathUtil.sumArray;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GroupStageTest {
 
@@ -53,8 +52,16 @@ public class GroupStageTest {
         for (League league : groupStage.getLeagues()) {
             ranks = league.getRanks();
             int wins = sumArray(ranks.values());
+            assertNotEquals(0, wins);
             assertEquals(((nbMatch(league.getCompetitors().size()) * 2)), wins);
         }
+        assertTrue(true);
+    }
+
+    @Test
+    void ranksGroupStageToStringTest() {
+        groupStage.play();
+        System.out.print(groupStage.ranksGroupStageToString());
         assertTrue(true);
     }
 }
