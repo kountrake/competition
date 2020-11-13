@@ -8,10 +8,19 @@ import david.naessens.util.MathUtil;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * The type Betters out.
+ */
 public class BettersOut implements CompetitorsSelector {
 
     private final int nbOut;
 
+    /**
+     * Instantiates a new Betters out.
+     *
+     * @param nbOut the number of competitors that goes to the final tournament
+     * @throws NotAPowerOfTwoException thrown if the number of competitors is not a power of two
+     */
     public BettersOut(int nbOut) throws NotAPowerOfTwoException {
         if ((MathUtil.isAPowerOfTwo(nbOut))) {
             throw new NotAPowerOfTwoException("Cannot take that number (" + nbOut + ") as a number of competitors to go out of groups");
@@ -21,8 +30,10 @@ public class BettersOut implements CompetitorsSelector {
 
     /**
      * Init finalists.
+     *
+     * @param groupStage the groupStage we need to get all the finalists that goes to the final tournament
+     * @return All the competitors that goes the final tournament
      */
-    @Override
     public ArrayList<Competitor> initFinalists(GroupStage groupStage) {
         ArrayList<Competitor> finalists = new ArrayList<>();
         int cpt = 1;
@@ -36,6 +47,7 @@ public class BettersOut implements CompetitorsSelector {
                 i = 0;
             }
             finalists.add(comps.get(i));
+            i++;
             cpt++;
         }
         Collections.shuffle(finalists);

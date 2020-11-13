@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MasterTest {
 
@@ -19,9 +18,8 @@ public class MasterTest {
     @BeforeEach
     void setup() throws Exception {
         competitors = CompetitorsGenerator.generateCompetitors(24);
-        GroupStage groupStage = new GroupStage(competitors, 3);
         CompetitorsSelector competitorsSelector = new BettersOut(8);
-        master = new Master(groupStage, competitorsSelector);
+        master = new Master(competitors, 3, competitorsSelector);
     }
 
     @Test
@@ -40,26 +38,17 @@ public class MasterTest {
 
     @Test
     void play4Groups8outTest() throws Exception {
-        GroupStage groupStage = new GroupStage(competitors, 4);
         CompetitorsSelector competitorsSelector = new BettersOut(8);
-        Master master2 = new Master(groupStage, competitorsSelector);
+        Master master2 = new Master(competitors, 4, competitorsSelector);
         master2.play();
         assertNotNull(master2.getWinner());
     }
 
     @Test
     void play4Groups16outTest() throws Exception {
-        GroupStage groupStage1 = new GroupStage(competitors, 4);
         CompetitorsSelector competitorsSelector = new BettersOut(16);
-        Master master2 = new Master(groupStage1, competitorsSelector);
+        Master master2 = new Master(competitors, 4, competitorsSelector);
         master2.play();
         assertNotNull(master2.getWinner());
-    }
-
-    @Test
-    void masterSummaryToStringTest() {
-        master.play();
-        System.out.println(master.masterSummary());
-        assertTrue(true);
     }
 }

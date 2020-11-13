@@ -52,7 +52,7 @@ public abstract class Competition {
      * Matches against others.
      *
      * @param competitors the competitors
-     * @param i           the
+     * @param i           the index of the players to be be chosen for the match
      */
     protected void matchesAgainstOthers(List<Competitor> competitors, int i) {
         for (int j = i + 1; j < competitors.size(); j++) {

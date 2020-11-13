@@ -103,6 +103,11 @@ public class Tournament extends Competition {
         process(competitorsRemaining);
     }
 
+    /**
+     * Tournament summary string.
+     *
+     * @return the string
+     */
     public String tournamentSummary() {
         StringBuilder res = new StringBuilder(this.competitorsRemaining.get(0).getName() + " \n");
         Collections.reverse(this.matches);

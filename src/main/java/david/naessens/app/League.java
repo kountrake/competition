@@ -54,6 +54,12 @@ public class League extends Competition {
         }
     }
 
+    /**
+     * Ranks to string.
+     *
+     * @param ranks the ranks
+     * @return the string
+     */
     public String ranksToString(Map<Competitor, Integer> ranks) {
         StringBuilder res = new StringBuilder("| League Ranking |\n"
                 + "_______________________\n");

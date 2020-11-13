@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class BettersOutTest {
 
@@ -17,6 +18,14 @@ public class BettersOutTest {
         ArrayList<Competitor> competitors = CompetitorsGenerator.generateCompetitors(24);
         GroupStage groupStage = new GroupStage(competitors, 4);
         groupStage.play();
-        assertEquals(8, bo.initFinalists(groupStage).size());
+        ArrayList<Competitor> finalists = bo.initFinalists(groupStage);
+        assertEquals(8, finalists.size());
+        assertNotEquals(finalists.get(0), finalists.get(1));
+        assertNotEquals(finalists.get(1), finalists.get(2));
+        assertNotEquals(finalists.get(2), finalists.get(3));
+        assertNotEquals(finalists.get(3), finalists.get(4));
+        assertNotEquals(finalists.get(4), finalists.get(5));
+        assertNotEquals(finalists.get(5), finalists.get(6));
+        assertNotEquals(finalists.get(6), finalists.get(7));
     }
 }

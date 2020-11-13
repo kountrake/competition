@@ -20,23 +20,37 @@ public class Master extends Competition {
     /**
      * Instantiates a new Competition.
      *
-     * @param groupStage          the group Stage
+     * @param competitors         the competitors
+     * @param nbGroups            the number of groups for the group stage
      * @param competitorsSelector the way competitors are selected from group stage to the play-off
      */
-    public Master(GroupStage groupStage, CompetitorsSelector competitorsSelector) {
-        super(groupStage.getCompetitors());
+    public Master(ArrayList<Competitor> competitors, int nbGroups, CompetitorsSelector competitorsSelector) {
+        super(competitors);
         this.competitorsSelector = competitorsSelector;
-        this.groupStage = groupStage;
+        this.groupStage = new GroupStage(competitors, nbGroups);
     }
 
+    /**
+     * Gets the group stage.
+     *
+     * @return the group stage
+     */
     public GroupStage getGroupStage() {
         return groupStage;
     }
 
+    /**
+     * Gets the winner.
+     *
+     * @return the winner
+     */
     public Competitor getWinner() {
         return winner;
     }
 
+    /**
+     * Sets the finalists.
+     */
     public void setFinalists() {
         this.finalists = competitorsSelector.initFinalists(groupStage);
     }
@@ -57,6 +71,11 @@ public class Master extends Competition {
         playTournament();
     }
 
+    /**
+     * Master summary string.
+     *
+     * @return the string
+     */
     public String masterSummary() {
         return getGroupStage().ranksGroupStageToString() + "\n\n" + this.tournament.tournamentSummary();
     }

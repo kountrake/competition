@@ -82,28 +82,41 @@ public class Match {
         if (Math.random() < 0.5) {
             competitor1.increaseWins();
             setWinner(competitor1);
-        }else {
+        } else {
             competitor2.increaseWins();
             setWinner(competitor2);
         }
     }
 
-    public Competitor strongest(){
-        if (competitor1.getStrength()>= competitor2.getStrength()){
+    /**
+     * Strongest competitor.
+     *
+     * @return the competitor
+     */
+    public Competitor strongest() {
+        if (competitor1.getStrength() >= competitor2.getStrength()) {
             return competitor1;
         }
         return competitor2;
     }
 
-    public Competitor weakest(){
-        if (competitor1.getStrength() < competitor2.getStrength()){
+    /**
+     * Weakest competitor.
+     *
+     * @return the competitor
+     */
+    public Competitor weakest() {
+        if (competitor1.getStrength() < competitor2.getStrength()) {
             return competitor1;
         }
         return competitor2;
     }
 
-    public void playWithStrength(){
-        float bonus = (float)(MAX_STRENGTH - (competitor1.getStrength() + competitor2.getStrength())) / 2;
+    /**
+     * Play with strength.
+     */
+    public void playWithStrength() {
+        float bonus = (float) (MAX_STRENGTH - (competitor1.getStrength() + competitor2.getStrength())) / 2;
         double random = Math.random();
         if (random >= ((weakest().getStrength() + bonus) / 10)) {
             strongest().increaseWins();

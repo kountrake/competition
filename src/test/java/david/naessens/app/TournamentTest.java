@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TournamentTest {
 
@@ -47,13 +46,5 @@ class TournamentTest {
         Tournament tournament = new Tournament(CompetitorsGenerator.generateCompetitors(8));
         tournament.play();
         assertEquals(1, tournament.getCompetitorsRemaining().size());
-    }
-
-    @Test
-    void tournamentSummaryTest() {
-        Tournament tournament = new Tournament(CompetitorsGenerator.generateCompetitors(32));
-        tournament.play();
-        System.out.print(tournament.tournamentSummary());
-        assertTrue(true);
     }
 }

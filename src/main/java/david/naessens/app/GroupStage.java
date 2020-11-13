@@ -3,12 +3,21 @@ package david.naessens.app;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Group stage.
+ */
 public class GroupStage extends Competition {
 
     private final int nbGroups;
     private final ArrayList<Group> groups;
     private final ArrayList<League> leagues;
 
+    /**
+     * Instantiates a new Group stage.
+     *
+     * @param competitors the competitors
+     * @param nbGroups    the nb groups
+     */
     public GroupStage(ArrayList<Competitor> competitors, int nbGroups) {
         super(competitors);
         this.nbGroups = nbGroups;
@@ -42,18 +51,30 @@ public class GroupStage extends Competition {
         }
     }
 
+    /**
+     * Init groups.
+     */
     public void initGroups() {
         generateGroups(this.nbGroups);
     }
 
+    /**
+     * Fill groups.
+     */
     public void fillGroups() {
         fillGroups(this.competitors, this.nbGroups);
     }
 
+    /**
+     * Init leagues.
+     */
     public void initLeagues() {
         initLeagues(this.groups);
     }
 
+    /**
+     * Init groups stage.
+     */
     public void initGroupsStage() {
         initGroups();
         fillGroups();
@@ -69,37 +90,68 @@ public class GroupStage extends Competition {
         }
     }
 
-    public ArrayList<Competitor> getCompetitorsInPosition(int i) {
-        Group group = new Group();
-        Competitor[] comps = new Competitor[group.getCompetitors().size()];
-        for (League league :
-                this.leagues) {
-            group.addCompetitor(league.ranks.keySet().toArray(comps)[i]);
-        }
-        return group.orderByVictories();
-    }
-
     public void play() {
         initGroupsStage();
         playGroups();
     }
 
+    /**
+     * Gets the competitors in the nth position of each group.
+     *
+     * @param i the index of the competitors to select
+     * @return the competitors in position
+     */
+    public ArrayList<Competitor> getCompetitorsInPosition(int i) {
+        Group group = new Group();
+        Competitor[] comps = new Competitor[group.getCompetitors().size()];
+        for (League league :
+                this.leagues) {
+            group.addCompetitor(league.ranking().keySet().toArray(comps)[i]);
+        }
+        return group.orderByVictories();
+    }
+
+    /**
+     * Gets groups.
+     *
+     * @return the groups
+     */
     public ArrayList<Group> getGroups() {
         return this.groups;
     }
 
+    /**
+     * Gets leagues.
+     *
+     * @return the leagues
+     */
     public ArrayList<League> getLeagues() {
         return leagues;
     }
 
+    /**
+     * Gets competitors.
+     *
+     * @return the competitors
+     */
     public ArrayList<Competitor> getCompetitors() {
         return new ArrayList<>(this.competitors);
     }
 
+    /**
+     * Gets the number of groups.
+     *
+     * @return the nb groups
+     */
     public int getNbGroups() {
         return nbGroups;
     }
 
+    /**
+     * Ranks group stage to string.
+     *
+     * @return the string
+     */
     public String ranksGroupStageToString() {
         StringBuilder res = new StringBuilder();
         for (League l :

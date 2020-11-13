@@ -57,11 +57,4 @@ public class GroupStageTest {
         }
         assertTrue(true);
     }
-
-    @Test
-    void ranksGroupStageToStringTest() {
-        groupStage.play();
-        System.out.print(groupStage.ranksGroupStageToString());
-        assertTrue(true);
-    }
 }
