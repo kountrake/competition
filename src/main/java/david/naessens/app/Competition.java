@@ -2,6 +2,7 @@ package david.naessens.app;
 
 import david.naessens.util.MapUtil;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,11 @@ public abstract class Competition {
     protected final List<Competitor> competitors;
 
     /**
+     * The Journalists
+     */
+    protected final ArrayList<Journalist> journalists;
+
+    /**
      * Instantiates a new Competition.
      *
      * @param competitors the competitors
@@ -28,6 +34,19 @@ public abstract class Competition {
     public Competition(List<Competitor> competitors) {
         this.competitors = competitors;
         this.match = new Match(competitors.get(0), competitors.get(1));
+        journalists = new ArrayList<>();
+    }
+
+    public void addJournalist(Journalist journalist) {
+        this.journalists.add(journalist);
+    }
+
+    public void addJournalists(List<Journalist> journalists) {
+        this.journalists.addAll(journalists);
+    }
+
+    public void removeJournalist(Journalist journalist) {
+        this.journalists.remove(journalist);
     }
 
     /**
@@ -70,6 +89,10 @@ public abstract class Competition {
         match.setCompetitor1(c1);
         match.setCompetitor2(c2);
         match.play();
+        for (Journalist journalist :
+                this.journalists) {
+            journalist.notifyMatchResult(match.getWinner(), match.getLooser());
+        }
     }
 
     /**

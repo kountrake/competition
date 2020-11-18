@@ -7,6 +7,7 @@ public class Match {
     private Competitor competitor1;
     private Competitor competitor2;
     private Competitor winner;
+    private Competitor looser;
     private final int MAX_STRENGTH = 10;
 
     /**
@@ -82,10 +83,16 @@ public class Match {
         if (Math.random() < 0.5) {
             competitor1.increaseWins();
             setWinner(competitor1);
+            setLooser(competitor2);
         } else {
             competitor2.increaseWins();
             setWinner(competitor2);
+            setLooser(competitor1);
         }
+    }
+
+    public Competitor getLooser() {
+        return this.looser;
     }
 
     /**
@@ -133,5 +140,9 @@ public class Match {
                 competitor1.getName() + " vs " + competitor2.getName() +
                 "===> The winner is " + winner.getName() +
                 '}';
+    }
+
+    private void setLooser(Competitor competitor) {
+        this.looser = competitor;
     }
 }
