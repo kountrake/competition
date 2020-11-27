@@ -22,9 +22,9 @@ public abstract class Competition {
     protected final List<Competitor> competitors;
 
     /**
-     * The Journalists
+     * The Sport observers
      */
-    protected final ArrayList<Journalist> journalists;
+    protected final ArrayList<SportObserver> sportObservers;
 
     /**
      * Instantiates a new Competition.
@@ -34,19 +34,36 @@ public abstract class Competition {
     public Competition(List<Competitor> competitors) {
         this.competitors = competitors;
         this.match = new Match(competitors.get(0), competitors.get(1));
-        journalists = new ArrayList<>();
+        sportObservers = new ArrayList<>();
     }
 
-    public void addJournalist(Journalist journalist) {
-        this.journalists.add(journalist);
+    /**
+     * Add sport observer.
+     *
+     * @param sportObserver the sport observer
+     */
+    public void addSportObserver(SportObserver sportObserver) {
+        this.sportObservers.add(sportObserver);
     }
 
-    public void addJournalists(List<Journalist> journalists) {
-        this.journalists.addAll(journalists);
+
+    /**
+     * Add sport observers.
+     *
+     * @param sportObservers the sport observers
+     */
+    public void addSportObservers(List<SportObserver> sportObservers) {
+        this.sportObservers.addAll(sportObservers);
     }
 
-    public void removeJournalist(Journalist journalist) {
-        this.journalists.remove(journalist);
+
+    /**
+     * Remove sport observer.
+     *
+     * @param sportObserver the sport observer
+     */
+    public void removeSportObserver(SportObserver sportObserver) {
+        this.sportObservers.remove(sportObserver);
     }
 
     /**
@@ -89,9 +106,16 @@ public abstract class Competition {
         match.setCompetitor1(c1);
         match.setCompetitor2(c2);
         match.play();
-        for (Journalist journalist :
-                this.journalists) {
-            journalist.notifyMatchResult(match.getWinner(), match.getLooser());
+        if (sportObservers.size() > 0)
+            System.out.println("---------------\n| New Match : |\n--------------- \n");
+        updateSportObservers();
+    }
+
+    private void updateSportObservers() {
+        Competitor winner = match.getWinner();
+        Competitor looser = match.getLooser();
+        for (SportObserver so : sportObservers) {
+            so.notifyMatchResult(winner, looser);
         }
     }
 
