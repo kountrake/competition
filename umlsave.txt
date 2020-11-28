@@ -1,9 +1,0 @@
-[Competition|-match: Match;-competitors: List\<Competitors\>| \<\<constructors\>\>; + Competition(List\<Competitor\>);\<\<methods\>\>; +play(); #play(List\<Competitor\>); #playMatch(c1: Competitor, c2: Competitor);+ranking():Map\<Competitor, Integer\>]
-[Competitor|-name: String;-strength: int;-victories: int|+Competitor( String name,int strength);+getName();+getStrength(); +getVivtories()]
-[Tournament|]
-[Match|]
-[League|]
-
-[Competition]->[League]
-[Competition]->[Tournament]
-[Match]<>->[Competition]
