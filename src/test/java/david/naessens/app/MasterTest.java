@@ -1,5 +1,7 @@
 package david.naessens.app;
 
+import david.naessens.app.competition.Master;
+import david.naessens.app.competition.component.Competitor;
 import david.naessens.app.competitorsselector.BettersOut;
 import david.naessens.app.competitorsselector.CompetitorsSelector;
 import david.naessens.util.CompetitorsGenerator;

@@ -9,6 +9,13 @@ regroupant plusieurs matchs entre différents compétiteurs.
 * Les championnats se jouent en match aller/retour.
 * Les tournois à élimination directe se réalise en plusieurs tours. Seuls les compétiteurs ayant gagné leur match passent
 au tour suivant
+* Les masters regroupent deux phases au sein d'une seule compétition. Dans la première phase des poules sont créées. Ces
+poules suivent le format du championnat. À l'issue de cette première phase, une phase de tournois se déroule en prenant 
+comme compétiteurs ceux sélectionner (cela dépend de la méthode de sélection). Le grand gagnant du master et celui qui 
+parvient à sortir de la phase de poule et ensuite gagne chacun de ses matchs dans la deuxième phase.
+* On peut rajouter à une compétition des journalistes. Leur rôle est de donner à chaque fin de match qui est le gagnant.
+* Il est également possible de rajouter à une compétition des bookmakers qui s'occupent après chaque match de mettre 
+les côtes des joueurs à jour 
 
 ## Prérequis pour l'utilisation de ce projet
 
@@ -41,15 +48,15 @@ utilisant les différentes commandes de Maven.
 Il est d'abord primordiale de récupérer le dépôt git du projet. Pour cela il vous faut vous placer dans le dossier où 
 vous voulez placer le dépôt.
 
-Exécuter ensuite la commande:
+Exécuter ensuite la commande :
 
 ```
     git clone git@gitlab-etu.fil.univ-lille1.fr:naessens/coo-s5-2020.git
 ```
 Cette commande vous permet de récupérer le dépôt via SSH. Dans le cas où cela ne fonctionnerait pas, vous devez 
-configurer et créer un clé ssh. Merci de vous référer à l'aide disponible [ici](https://git-scm.com/book/fr/v2/Git-sur-le-serveur-G%C3%A9n%C3%A9ration-des-cl%C3%A9s-publiques-SSH).
+configurer et créer une clé ssh. Merci de vous référer à l'aide disponible [ici](https://git-scm.com/book/fr/v2/Git-sur-le-serveur-G%C3%A9n%C3%A9ration-des-cl%C3%A9s-publiques-SSH).
 
-Dans le cas où vous voudriez récupérer le dépôt via HTTPS (sans configurer de SSH) utilisez cette commande:
+Dans le cas où vous voudriez récupérer le dépôt via HTTPS (sans configurer de SSH) utilisez cette commande :
 
 ```
     git clone https://gitlab-etu.fil.univ-lille1.fr/naessens/coo-s5-2020.git
@@ -103,7 +110,30 @@ Afin de supprimer tous les fichiers générés par Maven, vous pouvez exécuter 
 ```
     mvn clean
 ```
+## Utilisation des différentes compétitions
 
+Dans le Main créé, vous avez plusieurs examples à votre disposition afin de voir ce qui vous est rapidement possible de 
+faire.
+
+En voici un extrait
+ 
+```java
+//Create your own competitors
+Competitor competitor = new Competitor("Name");
+
+//Generate some random competitors
+ArrayList<Competitor> competitors = CompetitorsGenerator.generateCompetitors(11);
+
+//Don't forget to add your competitor to the list before creating a competition
+competitors.add(competitor);
+
+// Create your own league
+//A league makes every competitors play against each other twice
+League league = new League (competitors);
+
+// Let's play the League !
+league.play();
+```
 
 ## Autheurs
 

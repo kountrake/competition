@@ -1,4 +1,6 @@
-package david.naessens.app;
+package david.naessens.app.competition;
+
+import david.naessens.app.competition.component.Competitor;
 
 import java.util.HashMap;
 import java.util.List;
@@ -54,13 +56,7 @@ public class League extends Competition {
         }
     }
 
-    /**
-     * Ranks to string.
-     *
-     * @param ranks the ranks
-     * @return the string
-     */
-    public String ranksToString(Map<Competitor, Integer> ranks) {
+    private String ranksToString(Map<Competitor, Integer> ranks) {
         StringBuilder res = new StringBuilder("| League Ranking |\n"
                 + "_______________________\n");
         for (Competitor competitor :
@@ -68,5 +64,14 @@ public class League extends Competition {
             res.append(competitor.getName()).append(" | ").append(competitor.getWins()).append("\n");
         }
         return res.toString();
+    }
+
+    /**
+     * Ranks to string.
+     *
+     * @return the string
+     */
+    public String ranks() {
+        return ranksToString(ranking());
     }
 }

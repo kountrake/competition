@@ -1,5 +1,7 @@
 package david.naessens.app;
 
+import david.naessens.app.competition.component.Competitor;
+import david.naessens.app.competition.component.GroupStage;
 import david.naessens.app.competitorsselector.BettersOut;
 import david.naessens.app.exceptions.NotAPowerOfTwoException;
 import david.naessens.util.CompetitorsGenerator;

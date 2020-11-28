@@ -1,4 +1,7 @@
-package david.naessens.app;
+package david.naessens.app.competition.component;
+
+import david.naessens.app.competition.Competition;
+import david.naessens.app.competition.League;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -156,7 +159,7 @@ public class GroupStage extends Competition {
         StringBuilder res = new StringBuilder();
         for (League l :
                 getLeagues()) {
-            res.append(l.ranksToString(l.ranking())).append("\n\n");
+            res.append(l.ranks()).append("\n\n");
         }
         return res.toString();
     }

@@ -1,4 +1,4 @@
-package david.naessens.app;
+package david.naessens.app.competition.component;
 
 /**
  * The type Match.

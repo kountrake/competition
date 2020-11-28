@@ -1,19 +1,20 @@
 package david.naessens.app;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import david.naessens.app.Competitor;
+import david.naessens.app.competition.component.Competitor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
 class CompetitorTest {
-    
+
     private Competitor c1;
     private Competitor c2;
 
 
     @BeforeEach
-    void initialize(){
+    void initialize() {
         c1 = new Competitor("Jhon");
         c2 = new Competitor("Doe",5);
     }

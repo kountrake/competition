@@ -1,6 +1,8 @@
 package david.naessens.app;
 
 
+import david.naessens.app.competition.League;
+import david.naessens.app.competition.component.Competitor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -55,7 +57,7 @@ class LeagueTest {
                 c1.getName() + " | " + c1.getWins() + "\n" +
                 c3.getName() + " | " + c3.getWins() + "\n" +
                 c4.getName() + " | " + c4.getWins() + "\n";
-        assertEquals(myString, competition.ranksToString(competition.ranking()));
+        assertEquals(myString, competition.ranks());
     }
 
 }

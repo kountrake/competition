@@ -1,5 +1,8 @@
 package david.naessens.app;
 
+import david.naessens.app.competition.League;
+import david.naessens.app.competition.component.Competitor;
+import david.naessens.app.sportObserver.Journalist;
 import david.naessens.util.CompetitorsGenerator;
 import org.junit.jupiter.api.Test;
 

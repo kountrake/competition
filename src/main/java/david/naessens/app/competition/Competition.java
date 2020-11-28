@@ -1,5 +1,8 @@
-package david.naessens.app;
+package david.naessens.app.competition;
 
+import david.naessens.app.competition.component.Competitor;
+import david.naessens.app.competition.component.Match;
+import david.naessens.app.sportObserver.SportObserver;
 import david.naessens.util.MapUtil;
 
 import java.util.ArrayList;
@@ -78,7 +81,7 @@ public abstract class Competition {
      *
      * @param competitors the competitors
      */
-    protected void play(List<Competitor> competitors) {
+    public void play(List<Competitor> competitors) {
         for (int i = 0; i < competitors.size() - 1; i++) {
             matchesAgainstOthers(competitors, i);
         }
@@ -90,7 +93,7 @@ public abstract class Competition {
      * @param competitors the competitors
      * @param i           the index of the players to be be chosen for the match
      */
-    protected void matchesAgainstOthers(List<Competitor> competitors, int i) {
+    public void matchesAgainstOthers(List<Competitor> competitors, int i) {
         for (int j = i + 1; j < competitors.size(); j++) {
             playMatch(competitors.get(i), competitors.get(j));
         }
@@ -102,7 +105,7 @@ public abstract class Competition {
      * @param c1 the c 1
      * @param c2 the c 2
      */
-    protected void playMatch(Competitor c1, Competitor c2) {
+    public void playMatch(Competitor c1, Competitor c2) {
         match.setCompetitor1(c1);
         match.setCompetitor2(c2);
         match.play();
@@ -125,7 +128,7 @@ public abstract class Competition {
      * @param c1 the competitor 1
      * @param c2 the competitor 2
      */
-    protected void playMatchWithStrength(Competitor c1, Competitor c2) {
+    public void playMatchWithStrength(Competitor c1, Competitor c2) {
         match.setCompetitor1(c1);
         match.setCompetitor2(c2);
         match.playWithStrength();

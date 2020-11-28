@@ -1,6 +1,6 @@
 package david.naessens.util;
 
-import david.naessens.app.Competitor;
+import david.naessens.app.competition.component.Competitor;
 
 import java.util.ArrayList;
 

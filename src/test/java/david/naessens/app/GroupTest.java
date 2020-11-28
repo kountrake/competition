@@ -1,5 +1,7 @@
 package david.naessens.app;
 
+import david.naessens.app.competition.component.Competitor;
+import david.naessens.app.competition.component.Group;
 import david.naessens.util.CompetitorsGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

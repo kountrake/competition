@@ -1,7 +1,7 @@
 package david.naessens.app.competitorsselector;
 
-import david.naessens.app.Competitor;
-import david.naessens.app.GroupStage;
+import david.naessens.app.competition.component.Competitor;
+import david.naessens.app.competition.component.GroupStage;
 
 import java.util.ArrayList;
 

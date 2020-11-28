@@ -1,4 +1,6 @@
-package david.naessens.app;
+package david.naessens.app.sportObserver;
+
+import david.naessens.app.competition.component.Competitor;
 
 public class Journalist implements SportObserver {
 

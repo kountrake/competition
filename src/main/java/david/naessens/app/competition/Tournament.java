@@ -1,4 +1,6 @@
-package david.naessens.app;
+package david.naessens.app.competition;
+
+import david.naessens.app.competition.component.Competitor;
 
 import java.util.ArrayList;
 import java.util.Collections;

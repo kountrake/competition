@@ -1,5 +1,7 @@
 package david.naessens.app;
 
+import david.naessens.app.competition.Competition;
+import david.naessens.app.competition.component.Competitor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -78,7 +80,7 @@ class CompetitionTest {
     }
 }
 
-class MockCompetition extends Competition{
+class MockCompetition extends Competition {
 
     public MockCompetition(List<Competitor> competitors) {
         super(competitors);

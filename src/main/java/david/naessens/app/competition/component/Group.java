@@ -1,4 +1,6 @@
-package david.naessens.app;
+package david.naessens.app.competition.component;
+
+import david.naessens.app.competition.League;
 
 import java.util.ArrayList;
 import java.util.Arrays;
